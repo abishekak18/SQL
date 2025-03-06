@@ -1,0 +1,85 @@
+/*
+SHOW CHARACTER SET; -- shows various character sets that are supported.
+latin1 - is default charset.
+
+varchar(10) character set utf8    -- the particular column is set to utf8
+create database foreign_sales character set utf8;   -- entire database is set to utf8
+
+TEXT DATA:
+Tinytext - 255 bytes
+Text - 65535
+Mediumtext - 16777215
+Longtext - 4294967295
+
+we can store store numerical data also
+Tinyint  ---> is also used to store bool or boolean
+Smallint etc..,
+
+Date time year can also be stored with its respective name
+*/
+
+--    Basic Query
+
+show databases;
+
+create database ak;   -- creates a new database
+-- TO DELETE A DATABASE
+DROP DATABASE ak;
+DROP SCHEMA ak; -- same as above. u can use DATABASE Or SCHEMA
+DROP SCHEMA IF EXISTS ak; -- prevents error if db not found
+
+SHOW DATABASES; -- shows all the databases
+SHOW SCHEMAS; -- same as above. shows schemas/db
+
+USE ak; -- uses this database for all further commands
+SHOW TABLES;-- shows all tables in the database being used
+
+
+--          creating Table
+
+create table student(
+	id int primary key,
+    name varchar(30),
+    gpa decimal(3,2)
+);
+
+describe student;   -- describes the columns in the table student
+
+drop table student;  -- drops the table
+
+alter table student add column department varchar(10);   -- Adds a new column department to the student table
+
+alter table student drop column department;    -- drops the department column from student table
+
+
+--                Inserting Data
+
+insert into student values(1,"Abi",9.8);
+insert into student values(2,"Dev",1.8);    -- inserts a row. give values in column order
+
+insert into student values
+(3,"lav",8.5),
+(4,"sudha",8.2),
+(5,"navam",7.6); -- inserts more than one row
+
+insert into student(id,name) values(7,"venni"),(6,"dko"); -- inserts specific columns.
+
+
+--              Selecting Data
+
+select * from student;    -- displays all rows and columns in the student table
+select id,name from student;  -- displays specific columns
+
+
+
+
+
+
+
+
+
+
+
+
+
+
