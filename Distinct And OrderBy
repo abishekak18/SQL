@@ -1,0 +1,12 @@
+
+--    Distinct
+
+select distinct name from student;
+
+
+--  Order By
+
+-- Sort panna use aaggum note: sorting order kuda nammalae kudukala using case
+
+select * from student
+order by name;
