@@ -1,0 +1,43 @@
+
+-- Create database only if it does not exist
+CREATE DATABASE IF NOT EXISTS ak;
+
+-- Use the database
+USE ak;
+
+-- Drop the existing student table (if you want to recreate it)
+DROP TABLE IF EXISTS student;
+
+-- Create the student table
+CREATE TABLE IF NOT EXISTS student (
+    id INT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    gpa DECIMAL(3,2) CHECK (gpa BETWEEN 0 AND 10)
+);
+
+-- Insert values into the student table
+INSERT INTO student (id, name, gpa) VALUES 
+(1, 'Abi', 9.8),
+(2, 'Dev', 1.8),
+(3, 'Lav', 8.5),
+(4, 'Sudha', 8.2),
+(5, 'Navam', 7.6);
+
+-- Retrieve all students with GPA less than 9
+-- SELECT * FROM student WHERE gpa > 9;
+
+
+
+--           Update And delete
+
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE student SET gpa = 9 WHERE gpa < 9;
+
+SELECT * FROM student;
+
+
+delete from student 
+where id=3;
+
+SELECT * FROM student;
