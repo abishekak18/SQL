@@ -1,0 +1,30 @@
+
+-- A View --> In SQL is a virtual table that is based on the result of a SELECT query. It does not store data physically but provides a way to simplify complex queries and enhance security.
+
+CREATE VIEW emp_br
+AS
+SELECT employee.emp_id,employee.ename,employee.job_desc,branch.br_name
+FROM employee
+INNER JOIN branch
+ON employee.branch_id=branch.branch_id
+ORDER BY emp_id;
+
+SELECT * FROM emp_br; -- selecting all rows from view
+
+DROP VIEW emp_br; -- delete view
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
