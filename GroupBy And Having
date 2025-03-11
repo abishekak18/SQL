@@ -1,0 +1,54 @@
+
+CREATE DATABASE IF NOT EXISTS day3;
+USE day3;
+
+DROP TABLE IF EXISTS employee;
+
+CREATE TABLE employee (
+    emp_id INT PRIMARY KEY,
+    ename VARCHAR(50),
+    job_desc VARCHAR(100),
+    salary DECIMAL(10, 2)
+);
+
+INSERT INTO employee (emp_id, ename, job_desc, salary) VALUES
+(1, 'Alice Johnson', 'Software Engineer', 75000.00),
+(2, 'Bob Smith', 'Data Analyst', 60000.00),
+(3, 'Charlie Brown', 'Project Manager', 90000.00),
+(4, 'Diana Prince', 'UX Designer', 70000.00),
+(5, 'Ethan Hunt', 'DevOps Engineer', 80000.00),
+(6, 'Fiona Gallagher', 'Marketing Specialist', 55000.00),
+(7, 'George Clooney', 'Sales Executive', 65000.00),
+(8, 'Hannah Montana', 'HR Manager', 72000.00),
+(9, 'Ian Malcolm', 'Data Analyst', 85000.00),
+(10, 'Julia Roberts', 'Web Developer', 68000.00);
+
+-- SELECT * FROM employee;
+
+SELECT job_desc,FORMAT(AVG(salary),0) avg_sal
+FROM employee
+GROUP BY job_desc; -- shows avg salary of each category within job_desc
+
+
+SELECT job_desc,COUNT(emp_id) count
+FROM employee
+GROUP BY job_desc; -- displays number of employees count in each job_desc category
+
+ 
+--  Where is used to filter the rows before grouping. Having is used to filter the groups.
+
+SELECT job_desc,COUNT(emp_id) AS count
+FROM employee
+GROUP BY job_desc
+HAVING COUNT(emp_id)>1
+ORDER BY job_desc;   --  displays number of employees count in each job_desc category only when count is greater than 1.
+
+
+
+SELECT job_desc,COUNT(emp_id) AS count
+FROM employee
+WHERE salary>15000
+GROUP BY job_desc
+HAVING COUNT(emp_id)>1
+ORDER BY COUNT(emp_id) DESC;
+
