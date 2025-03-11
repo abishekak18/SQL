@@ -1,0 +1,29 @@
+-- Indexing in SQL is a technique used to speed up database queries by creating a special lookup table that allows the database engine to find data faster.
+-- Think of it like an index in a book—instead of scanning every page, you quickly jump to the relevant section.
+
+SHOW INDEX FROM employee; -- show current indices.       Automatically created when a primary key is defined
+
+CREATE INDEX name_index ON employee(ename); -- creates a new index
+
+
+CREATE TABLE employee (
+    emp_id INT PRIMARY KEY,  -- Automatically indexed
+    ename VARCHAR(50),
+    job_desc VARCHAR(100),
+    salary DECIMAL(10, 2)
+);
+
+ALTER TABLE employee
+DROP INDEX name_index; -- drop index
+
+ALTER TABLE employee
+ADD INDEX(ename); -- create index using alter command 
+
+-- PRIMARY INDEX	 -->      Auto-created for PRIMARY KEY
+-- UNIQUE INDEX	     -->      Ensures values are unique
+-- COMPOSITE INDEX	 -->      Index on multiple columns
+-- CLUSTERED INDEX	 -->      Sorts physical data (only one per table)
+-- NON-CLUSTERED INDEX	-->   Stores pointers to data (multiple allowed)
+-- FULL-TEXT INDEX	 -->      Used for fast text searches
+
+
