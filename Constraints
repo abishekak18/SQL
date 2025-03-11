@@ -1,0 +1,38 @@
+
+-----------------------------   Constraints   ------------------------------------
+
+-- A constraint is a rule applied to table columns to enforce data integrity and prevent invalid data from being entered into a database.
+
+
+
+CREATE TABLE employee (
+emp_id INT PRIMARY KEY AUTO_INCREMENT, -- id will be auto incremented for new rows
+ename VARCHAR(30) NOT NULL, -- null value cannot be inserted for the column
+job_desc VARCHAR(20) DEFAULT 'unassigned', -- sets default when not mentioned
+salary INT,
+pan VARCHAR(10) UNIQUE,-- cannot contain duplicates
+CHECK (salary>100000));    -- we can only able to add in table if it satisfy this condition
+
+
+-- Foreign Key  (Establishes a relationship between two tables)
+-- Foreign key is a field in one table referring to the primary key of another table.
+
+CREATE TABLE branch (
+branch_id INT PRIMARY KEY AUTO_INCREMENT,
+br_name VARCHAR(30) NOT NULL,
+addr VARCHAR(200) );
+
+-- create employee table with branch_id as foreign key. It refers to the branch_id of branch table.
+CREATE TABLE employee (
+emp_id INT PRIMARY KEY,
+ename VARCHAR(30),
+job_desc VARCHAR(20),
+salary INT,
+branch_id INT,
+CONSTRAINT FK_branchId FOREIGN KEY(branch_id) REFERENCES branch(branch_id));
+
+-- droping FK
+ALTER TABLE employee
+DROP FOREIGN KEY FK_branchId;
+
+
